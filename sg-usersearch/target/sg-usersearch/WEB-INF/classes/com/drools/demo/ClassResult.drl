@@ -1,0 +1,69 @@
+package org.cohbe.ssa.rules;
+
+import co.drools.model.*;
+
+rule "Highest Score in Maths"
+lock-on-active true
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(maths > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerMath($stList.getName());
+        update($sc)
+		System.out.println(" Rule 1: Maths score");
+end
+
+rule "Highest Score in English"
+lock-on-active true
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(english > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerEnglish($stList.getName());
+        update($sc)
+		System.out.println(" Rule 2: English Score");
+end
+
+rule "Highest Score in Chemistry"
+lock-on-active true
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(chemistry > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerChemistry($stList.getName());
+        update($sc)
+		System.out.println(" Rule 3: Chemistry Score");
+end
+
+rule "Highest Score in Physics"
+lock-on-active true
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(physics > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerPhysics($stList.getName());
+        update($sc)
+		System.out.println(" Rule 4: Physics Score");
+end
+
+rule "Is there any highest scorer in maths"
+lock-on-active true
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass(highScorerMath == null);
+then
+		System.out.println(" Rule 5: There is no highest scorer in maths");
+end

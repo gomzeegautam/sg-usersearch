@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="NonFinancialRulesFlow" id="1234" package-name="org.cohbe.ssa.rules" >
+
+  <header>
+  </header>
+
+  <nodes>
+    <start id="1" name="START" x="51" y="31" width="224" height="48" />
+    <ruleSet id="50" name="Sample 1" x="195" y="32" width="183" height="49" ruleFlowGroup="Program Eligibility" />
+    <end id="23" name="End" x="663" y="58" width="48" height="48" />
+    <ruleSet id="62" name="Sample 2" x="467" y="36" width="96" height="39" ruleFlowGroup="Tax Filing Status 4" />
+  </nodes>
+
+  <connections>
+    <connection from="1" to="50" />
+    <connection from="62" to="23" />
+    <connection from="50" to="62" />
+  </connections>
+
+</process>

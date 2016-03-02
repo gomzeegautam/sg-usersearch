@@ -1,0 +1,59 @@
+package org.cohbe.ssa.rules;
+
+import co.drools.model.*;
+
+rule "Highest Score in Maths"
+
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(maths > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerMath($stList.getName());
+        update($sc)
+		System.out.println(" Rule 1: Maths score");
+end
+
+rule "Highest Score in English"
+
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(english > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerEnglish($stList.getName());
+        update($sc)
+		System.out.println(" Rule 2: English Score");
+end
+
+rule "Highest Score in Chemistry"
+
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(chemistry > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerChemistry($stList.getName());
+        update($sc)
+		System.out.println(" Rule 3: Chemistry Score");
+end
+
+rule "Highest Score in Physics"
+
+dialect "mvel"
+dialect "java"
+when
+		$sc : SeniorClass();
+		$stList : Students(physics > 90)
+		        from $sc.getStud();
+then
+        $sc.setHighScorerPhysics($stList.getName());
+        update($sc)
+		System.out.println(" Rule 4: Physics Score");
+end
