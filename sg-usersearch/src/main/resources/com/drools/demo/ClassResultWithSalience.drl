@@ -78,16 +78,16 @@ then
 end
 
 rule "Students passed count"
-lock-on-active true
+no-loop true
 dialect "mvel"
 dialect "java"
 salience 1
 when
-		$sc : SeniorClass();		
+		$sc : SeniorClass(studentPassCount > 0);		
 then
-		if($sc.getStudentPassCount()>0){
+		
 			System.out.println(" Rule 6: Total no. of Students passed are: " + $sc.getStudentPassCount());
-		}
+		
 end
 
 rule "Students passed count with"
